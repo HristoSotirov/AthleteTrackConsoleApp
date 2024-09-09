@@ -22,6 +22,24 @@ public class Users {
         this.userType = userType;
     }
 
+    // register users
+    public Users(String name, String username, String password, String phone, String email, Long userType) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.userType = userType;
+    }
+
+    public Users(String name, String username, String phone, String email, Long userType) {
+        this.name = name;
+        this.username = username;
+        this.phone = phone;
+        this.email = email;
+        this.userType = userType;
+    }
+
     public Long getId() {
         return id;
     }

@@ -7,12 +7,24 @@ public class Clubs {
     private String address;
     private String phone;
     private String email;
+    private Long verifiedBy;
+
 
     public Clubs() {
     }
 
-    public Clubs(Long id, String name, Long sportId, String address, String phone, String email) {
+    public Clubs(Long id, String name, Long sportId, String address, String phone, String email, Long verifiedBy) {
         this.id = id;
+        this.name = name;
+        this.sportId = sportId;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.verifiedBy = verifiedBy;
+    }
+
+    // register new club
+    public Clubs(String name, Long sportId, String address, String phone, String email) {
         this.name = name;
         this.sportId = sportId;
         this.address = address;
@@ -68,15 +80,24 @@ public class Clubs {
         this.email = email;
     }
 
+    public Long getVerifiedBy() {
+        return verifiedBy;
+    }
+
+    public void setVerifiedBy(Long verifiedBy) {
+        this.verifiedBy = verifiedBy;
+    }
+
     @Override
     public String toString() {
         return "Clubs{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", sportId=" + sportId +
-               ", address='" + address + '\'' +
-               ", phone='" + phone + '\'' +
-               ", email='" + email + '\'' +
-               '}';
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sportId=" + sportId +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", verifiedBy=" + verifiedBy +
+                '}';
     }
 }

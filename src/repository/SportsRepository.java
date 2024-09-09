@@ -26,20 +26,52 @@ public class SportsRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle exceptions as needed
+            e.printStackTrace();
         }
 
         return sports;
     }
 
-    public static void main(String[] args) {
-        SportsRepository repository = new SportsRepository();
-        List<String> sports = repository.getAllSportsInAlphabeticalOrder();
+    public Long getSportIdByName(String sportName) {
+        String query = "SELECT id FROM public.sports WHERE sport_name = ?";
+        Long sportId = null;
 
-        System.out.println("Sports in alphabetical order:");
-        for (int i = 0; i < sports.size(); i++) {
-            System.out.println((i + 1) + ". " + sports.get(i));
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, sportName);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    sportId = resultSet.getLong("id");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+        return sportId;
+    }
+
+    public String getSportNameById(Integer sportId) {
+        String query = "SELECT sport_name FROM public.sports WHERE id = ?";
+        String sportName = null;
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, sportId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    sportName = resultSet.getString("sport_name");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return sportName;
     }
 
 }
