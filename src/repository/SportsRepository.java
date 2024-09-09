@@ -53,14 +53,14 @@ public class SportsRepository {
         return sportId;
     }
 
-    public String getSportNameById(Integer sportId) {
+    public String getSportNameById(Long sportId) {
         String query = "SELECT sport_name FROM public.sports WHERE id = ?";
         String sportName = null;
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setInt(1, sportId);
+            statement.setLong(1, sportId);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     sportName = resultSet.getString("sport_name");

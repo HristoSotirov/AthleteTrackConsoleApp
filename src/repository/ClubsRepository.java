@@ -34,34 +34,25 @@ public class ClubsRepository {
         }
     }
 
-    public List<Clubs> getUnverifiedClubs() throws SQLException {
-        String query = "SELECT id, name, sport_id, address, phone, email, verified_by FROM clubs WHERE verified_by = 0";
-        List<Clubs> unverifiedClubs = new ArrayList<>();
+    public List<String> getUnverifiedClubs() throws SQLException {
+        String query = "SELECT name FROM clubs WHERE verified_by = 0";
+        List<String> unverifiedClubNames = new ArrayList<>();
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
-
-                Clubs club = new Clubs();
-                club.setId(resultSet.getLong("id"));
-                club.setName(resultSet.getString("name"));
-                club.setSportId(resultSet.getLong("sport_id"));
-                club.setAddress(resultSet.getString("address"));
-                club.setPhone(resultSet.getString("phone"));
-                club.setEmail(resultSet.getString("email"));
-                club.setVerifiedBy(resultSet.getLong("verified_by"));
-
-
-                unverifiedClubs.add(club);
+                String clubName = resultSet.getString("name");
+                unverifiedClubNames.add(clubName);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return unverifiedClubs;
+        return unverifiedClubNames;
     }
+
 
     public Clubs getClubById(Long clubId) throws SQLException {
         String query = "SELECT id, name, sport_id, address, phone, email, verified_by FROM clubs WHERE id = ?";
@@ -112,6 +103,27 @@ public class ClubsRepository {
 
         return isVerified;
     }
+
+    public void verifyClub(Long clubId, Long verifierId) throws SQLException {
+        String query = "UPDATE clubs SET verified_by = ? WHERE id = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setLong(1, verifierId);
+            statement.setLong(2, clubId);
+
+            int rowsUpdated = statement.executeUpdate();
+
+            if (rowsUpdated == 0) {
+                throw new SQLException("No rows updated. Club ID may not exist.");
+            }
+
+        } catch (SQLException e) {
+            throw new SQLException("Failed to verify club with ID " + clubId, e);
+        }
+    }
+
 
     public Long getClubIdByName(String name) {
         String query = "SELECT id FROM clubs WHERE name = ?";

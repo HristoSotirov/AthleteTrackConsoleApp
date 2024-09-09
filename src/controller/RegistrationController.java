@@ -117,10 +117,10 @@ public class RegistrationController {
                 System.out.println(color.RED + "This field cannot be empty. Please try again." + color.RESET);
                 continue;
             }
-            if (!clubService.isClubPhoneUnique(clubEmail)) {
+            if (!clubService.isClubEmailUnique(clubEmail)) {
                 System.out.println(color.RED + "There is already registration with this email. Please choose a different name." + color.RESET);
             }
-        } while(!clubService.isClubPhoneUnique(clubEmail) || clubEmail.trim().isEmpty());
+        } while(!clubService.isClubEmailUnique(clubEmail) || clubEmail.trim().isEmpty());
 
         System.out.println(color.BLUE + "\nEnter club admin information. " + color.RESET);
 

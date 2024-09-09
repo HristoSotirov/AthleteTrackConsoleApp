@@ -1,5 +1,6 @@
 package client;
 
+import controller.ClubController;
 import controller.RegistrationController;
 import controller.UserController;
 
@@ -9,6 +10,7 @@ import java.util.Scanner;
 public class Client {
     private final RegistrationController registrationController = new RegistrationController();
     private final UserController userController = new UserController();
+    private final ClubController clubController = new ClubController();
     private final Scanner scanner = new Scanner(System.in);
 
     private final Colors color = new Colors();
@@ -89,6 +91,7 @@ public class Client {
                     profileMenu(loggedUserId);
                     break;
                 case "2":
+                    clubController.verifyClub(loggedUserId);
                     break;
                 case "3":
                     break;

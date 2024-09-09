@@ -30,7 +30,7 @@ public class SportService {
         return sportsRepository.getSportIdByName(allSports.get(num - 1));
     }
 
-    public String getSportNameById(Integer sportId) {
+    public String getSportNameById(Long sportId) {
         return sportsRepository.getSportNameById(sportId);
     }
 }
