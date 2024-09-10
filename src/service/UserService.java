@@ -50,6 +50,10 @@ public class UserService {
         return userDTO;
     }
 
+    public Long getUserIdByUsername(String name) {
+        return usersRepository.getUserIdByUsername(name);
+    }
+
     public void updateUserName(Long userId, String newName) {
         usersRepository.updateUserName(userId, newName);
     }

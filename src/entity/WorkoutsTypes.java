@@ -14,6 +14,11 @@ public class WorkoutsTypes {
         this.types = types;
     }
 
+    public WorkoutsTypes(Long clubId, String types) {
+        this.clubId = clubId;
+        this.types = types;
+    }
+
     public Long getId() {
         return id;
     }

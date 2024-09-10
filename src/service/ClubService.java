@@ -59,7 +59,6 @@ public class ClubService {
         clubsRepository.verifyClub(clubId, verifierId);
     }
 
-
     public Long getClubIdByName(String name) {
         return clubsRepository.getClubIdByName(name);
     }

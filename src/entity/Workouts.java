@@ -9,17 +9,28 @@ public class Workouts {
     private Long workoutTypeId;
     private String description;
     private LocalDateTime doneAt;
+    private Long enteredBy;
 
     public Workouts() {
     }
 
-    public Workouts(Long id, Long athleteId, Long clubId, Long workoutTypeId, String description, LocalDateTime doneAt) {
+    public Workouts(Long id, Long athleteId, Long clubId, Long workoutTypeId, String description, LocalDateTime doneAt, Long enteredBy) {
         this.id = id;
         this.athleteId = athleteId;
         this.clubId = clubId;
         this.workoutTypeId = workoutTypeId;
         this.description = description;
         this.doneAt = doneAt;
+        this.enteredBy = enteredBy;
+    }
+
+    public Workouts(Long athleteId, Long clubId, Long workoutTypeId, String description, LocalDateTime doneAt, Long enteredBy) {
+        this.athleteId = athleteId;
+        this.clubId = clubId;
+        this.workoutTypeId = workoutTypeId;
+        this.description = description;
+        this.doneAt = doneAt;
+        this.enteredBy = enteredBy;
     }
 
     public Long getId() {
@@ -70,15 +81,24 @@ public class Workouts {
         this.doneAt = doneAt;
     }
 
+    public Long getEnteredBy() {
+        return enteredBy;
+    }
+
+    public void setEnteredBy(Long enteredBy) {
+        this.enteredBy = enteredBy;
+    }
+
     @Override
     public String toString() {
         return "Workouts{" +
-               "id=" + id +
-               ", athleteId=" + athleteId +
-               ", clubId=" + clubId +
-               ", workoutTypeId=" + workoutTypeId +
-               ", description='" + description + '\'' +
-               ", doneAt=" + doneAt +
-               '}';
+                "id=" + id +
+                ", athleteId=" + athleteId +
+                ", clubId=" + clubId +
+                ", workoutTypeId=" + workoutTypeId +
+                ", description='" + description + '\'' +
+                ", doneAt=" + doneAt +
+                ", enteredBy=" + enteredBy +
+                '}';
     }
 }

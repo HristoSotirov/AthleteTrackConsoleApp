@@ -27,7 +27,7 @@ public class UserController {
                 "Name: " + userDTO.getName() +
                 "\nUsername: " + userDTO.getUsername() +
                 "\nPhone: " + userDTO.getPhone() +
-                "\nEmail :" + userDTO.getEmail() +
+                "\nEmail: " + userDTO.getEmail() +
                 "\nUser type: " + userDTO.getType()
         );
     }
@@ -36,7 +36,7 @@ public class UserController {
         String newName;
         do {
             System.out.print("New Name: ");
-            newName = scanner.nextLine();
+            newName = scanner.nextLine().trim();
 
             if (newName.trim().isEmpty()) {
                 System.out.println(color.RED + "This field cannot be empty. Please try again." + color.RESET);
@@ -49,7 +49,7 @@ public class UserController {
         String newUsername;
         do {
             System.out.print("New Username: ");
-            newUsername = scanner.nextLine();
+            newUsername = scanner.nextLine().trim();
 
             if (newUsername.trim().isEmpty()) {
                 System.out.println(color.RED + "This field cannot be empty. Please try again." + color.RESET);
@@ -66,7 +66,7 @@ public class UserController {
         String newPassword;
         do {
             System.out.print("New Password: ");
-            newPassword = scanner.nextLine();
+            newPassword = scanner.nextLine().trim();
 
             if (newPassword.trim().isEmpty()) {
                 System.out.println(color.RED + "This field cannot be empty. Please try again." + color.RESET);
@@ -79,7 +79,7 @@ public class UserController {
         String newPhone;
         do {
             System.out.print("New Phone: ");
-            newPhone = scanner.nextLine();
+            newPhone = scanner.nextLine().trim();
 
             if (newPhone.trim().isEmpty()) {
                 System.out.println(color.RED + "This field cannot be empty. Please try again." + color.RESET);
@@ -96,7 +96,7 @@ public class UserController {
         String newEmail;
         do {
             System.out.print("Admin Email: ");
-            newEmail = scanner.nextLine();
+            newEmail = scanner.nextLine().trim();
 
             if (newEmail.trim().isEmpty()) {
                 System.out.println(color.RED + "This field cannot be empty. Please try again." + color.RESET);
