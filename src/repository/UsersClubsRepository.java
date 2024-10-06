@@ -1,5 +1,6 @@
 package repository;
 
+import client.Colors;
 import entity.UsersClubs;
 
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersClubsRepository {
+    private final Colors color = new Colors();
 
     private Connection getConnection() throws SQLException {
         return DatabaseConfig.getConnection();
@@ -29,7 +31,8 @@ public class UsersClubsRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 
@@ -48,7 +51,8 @@ public class UsersClubsRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return clubCount;
@@ -69,7 +73,8 @@ public class UsersClubsRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return clubIds;
@@ -90,7 +95,8 @@ public class UsersClubsRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return clubId;
@@ -113,7 +119,8 @@ public class UsersClubsRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return exists;
@@ -141,7 +148,8 @@ public class UsersClubsRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return coaches;
@@ -169,7 +177,8 @@ public class UsersClubsRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return athlete;
@@ -186,7 +195,8 @@ public class UsersClubsRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 

@@ -1,11 +1,14 @@
 package repository;
 
+import client.Colors;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UsersTypesRepository {
+    private final Colors color = new Colors();
 
     private Connection getConnection() throws SQLException {
         return DatabaseConfig.getConnection();
@@ -26,7 +29,8 @@ public class UsersTypesRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return type;
@@ -47,7 +51,8 @@ public class UsersTypesRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return id;

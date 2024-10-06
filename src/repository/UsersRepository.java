@@ -1,13 +1,17 @@
 package repository;
 
+import client.Colors;
 import entity.Users;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UsersRepository {
+    private final Colors color = new Colors();
 
     private Connection getConnection() throws SQLException {
         return DatabaseConfig.getConnection();
@@ -29,7 +33,8 @@ public class UsersRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 
@@ -48,7 +53,8 @@ public class UsersRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return userId;
@@ -70,7 +76,8 @@ public class UsersRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return isUnique;
@@ -92,7 +99,8 @@ public class UsersRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return isUnique;
@@ -114,7 +122,8 @@ public class UsersRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return isUnique;
@@ -136,7 +145,8 @@ public class UsersRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return userId;
@@ -163,7 +173,8 @@ public class UsersRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return user;
@@ -180,7 +191,8 @@ public class UsersRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 
@@ -195,7 +207,8 @@ public class UsersRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 
@@ -210,7 +223,8 @@ public class UsersRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 
@@ -225,7 +239,8 @@ public class UsersRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 
@@ -240,7 +255,8 @@ public class UsersRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 

@@ -1,5 +1,7 @@
 package repository;
 
+import client.Colors;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SportsRepository {
+    private final Colors color = new Colors();
 
     private Connection getConnection() throws SQLException {
         return DatabaseConfig.getConnection();
@@ -26,7 +29,8 @@ public class SportsRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return sports;
@@ -47,7 +51,8 @@ public class SportsRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return sportId;
@@ -68,7 +73,8 @@ public class SportsRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return sportName;

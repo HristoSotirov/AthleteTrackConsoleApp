@@ -19,7 +19,6 @@ public class RegistrationController {
     private final Colors color = new Colors();
     private final Scanner scanner = new Scanner(System.in);
 
-    // Empty constructor
     public RegistrationController() {}
 
     public Long login() throws SQLException {

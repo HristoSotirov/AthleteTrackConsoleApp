@@ -1,5 +1,6 @@
 package repository;
 
+import client.Colors;
 import entity.WorkoutsTypes;
 
 import java.sql.*;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutsTypesRepository {
+    private final Colors color = new Colors();
     private Connection getConnection() throws SQLException {
         return DatabaseConfig.getConnection();
     }
@@ -31,7 +33,8 @@ public class WorkoutsTypesRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
         return workoutsType;
     }
@@ -57,7 +60,8 @@ public class WorkoutsTypesRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return workoutsTypesList;
@@ -82,7 +86,8 @@ public class WorkoutsTypesRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return exists;
@@ -107,7 +112,8 @@ public class WorkoutsTypesRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return workoutType;

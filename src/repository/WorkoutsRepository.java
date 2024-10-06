@@ -2,6 +2,7 @@ package repository;
 
 import DTO.AnalysisDTO;
 import DTO.WorkoutsDTO;
+import client.Colors;
 import entity.Analysis;
 import entity.Workouts;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class WorkoutsRepository {
+    private final Colors color = new Colors();
     private Connection getConnection() throws SQLException {
         return DatabaseConfig.getConnection();
     }
@@ -34,7 +36,8 @@ public class WorkoutsRepository {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 
@@ -56,7 +59,8 @@ public class WorkoutsRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return exists;
@@ -73,7 +77,8 @@ public class WorkoutsRepository {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
     }
 
@@ -94,7 +99,8 @@ public class WorkoutsRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         String totalWorkoutsByTypeQuery = "SELECT wt.type AS workout_type_name, COUNT(*) AS total " +
@@ -118,7 +124,8 @@ public class WorkoutsRepository {
                 analysis.setTotalWorkoutsByType(totalWorkoutsByType);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
 
@@ -144,7 +151,8 @@ public class WorkoutsRepository {
             }
             analysis.setWorkouts(workouts);
         } catch (SQLException e) {
-            e.printStackTrace();
+            ErrorLoggerConfig.logMessage("Error: " + e);
+            System.out.println(color.RED + "Error performing this operation. Please try again later." + color.RESET);
         }
 
         return analysis;

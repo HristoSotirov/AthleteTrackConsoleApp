@@ -2,6 +2,7 @@ package client;
 
 import DTO.UserDTO;
 import controller.*;
+import repository.ErrorLoggerConfig;
 import service.UsersClubsService;
 
 import java.sql.SQLException;
@@ -21,6 +22,8 @@ public class Client {
     }
 
     public static void main(String[] args) throws SQLException {
+        ErrorLoggerConfig.setup();
+
         Client client = new Client();
 
         System.out.println("\nWelcome to Athlete Track App.\n");
