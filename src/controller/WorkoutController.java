@@ -171,6 +171,7 @@ public class WorkoutController {
             if (scanner.hasNextInt()) {
                 choice = scanner.nextInt();
                 if (choice == 0){
+                    scanner.nextLine();
                     return addWorkoutType(clubId);
                 }
                 if (choice > 0 && choice <= workoutsTypes.size()) {
